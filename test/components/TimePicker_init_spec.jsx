@@ -2,6 +2,7 @@ import React from 'react';
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
 import moment from 'moment';
+import fecha from 'fecha';
 
 import TimePicker from '../../src/components/TimePicker';
 import MaterialTheme from '../../src/components/MaterialTheme';
@@ -71,14 +72,14 @@ describe('TimePicker initial', () => {
 
     it('should rendered with current time in child props', () => {
       const wrapper = shallow(<TimePicker />);
-      const [hour, minute] = moment().format("HH:mm").split(':');
+      const [hour, minute] = fecha.format(new Date(), "HH:mm").split(':');
       expect(wrapper.find(MaterialTheme).props().hour).to.equal(hour);
       expect(wrapper.find(MaterialTheme).props().minute).to.equal(minute);
     });
 
     it('should rendered with current time in DOM', () => {
       const wrapper = shallow(<TimePicker withoutIcon={true} />);
-      const [hour, minute] = moment().format("HH:mm").split(':');
+      const [hour, minute] = fecha.format(new Date(), "HH:mm").split(':');
       expect(wrapper.find('.preview_container').text()).to.equal(`${hour} : ${minute}`);
     });
   });

@@ -1,4 +1,4 @@
-import moment from 'moment';
+import fecha from 'fecha';
 import {expect} from 'chai';
 import {
   initialTime,
@@ -14,7 +14,7 @@ import {
 describe('Utils Test', () => {
   describe('Test initialTime func with 24h mode', () => {
     it('should get current time', () => {
-      let times = moment().format("HH:mm").split(':');
+      let times = fecha.format(new Date(), "HH:mm").split(':');
       expect([...times, null]).to.deep.equal(initialTime(false));
     });
 

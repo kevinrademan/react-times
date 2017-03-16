@@ -1,6 +1,6 @@
-import moment from 'moment';
+import fecha from 'fecha';
 
-const getCurrentTime = () => moment().format("HH:mm")
+const getCurrentTime = () => fecha.format(new Date(), "HH:mm")
 
 export default {
   current: getCurrentTime
